@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+
+{% if object_list %}
+<table class="table table-hover">
+      <thead>
+    <tr>
+      <th scope="col">Секция</th>
+      <th scope="col">Дата и время</th>
+    </tr>
+      </thead>
+
+{%for train in  object_list|dictsort:"time"  %}
+ <tbody>
+    <tr class="table-info">
+      <td>{{train.get_name_display}}</td>
+      <td>{{train.time}}</td>
+    </tr>
+ </tbody>
+{% endfor %}
+{% else %}
+    <div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert"></button>
+  <h4 class="alert-heading">Тренировки в этой секции пока не запланированы</h4>
+  <p class="mb-0">Возможно, вас заинтересуют другие секции. <a href="/index" class="alert-link">Ознакомьтесь и выберите другую секцию </a>.</p>
+    </div>
+
+{% endif %}
+</table>
+
+<h3 align="center"><a href="/index" >На главную</a></h3>
+{% endblock content %}
