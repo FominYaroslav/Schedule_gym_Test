@@ -24,11 +24,11 @@ from index.views import Search
 from trainings import models
 
 router = routers.DefaultRouter()
-router.register(r'trainings', views.TrainingViewSet)
+router.register(r'/trainings', views.TrainingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('schedule', ListView.as_view(model = models.Training, paginate_by = 12, template_name = 'schedule.html')),
+    re_path('schedule', ListView.as_view(model = models.Training, paginate_by = 15, template_name = 'schedule.html')),
     re_path('section', Search.as_view(), name= 'section'),
     re_path('index', TemplateView.as_view(template_name = "index.html")),
     path('api', include(router.urls)),
